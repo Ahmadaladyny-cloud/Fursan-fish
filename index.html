@@ -26,10 +26,19 @@ min-height:100vh;color:#fff}
 .cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;z-index:200;backdrop-filter:blur(5px)}
 .cart-content{background:white;color:#333;width:92%;max-width:420px;margin:40px auto;border-radius:20px;padding:25px;max-height:85vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
 .cart-content h2{color:#0d47a1;text-align:center;margin-bottom:15px}
-.cart-item{display:flex;justify-content:space-between;margin:12px 0;font-size:16px;padding:8px 0;border-bottom:1px dashed #ddd}
-.total{font-weight:bold;font-size:22px;margin:20px 0;padding-top:15px;border-top:3px solid #0d47a1;color:#0d47a1}
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin:15px 0;font-size:16px;padding:12px;background:#f8f9fa;border-radius:12px}
+.item-details{flex:1}
+.item-name{font-weight:bold;margin-bottom:4px}
+.item-price{color:#666;font-size:14px}
+.qty-controls{display:flex;align-items:center;gap:8px}
+.qty-btn{background:#0d47a1;color:white;border:none;width:30px;height:30px;border-radius:8px;font-size:18px;font-weight:bold}
+.qty-btn:active{transform:scale(0.9)}
+.delete-btn{background:#ff3b30;color:white;border:none;width:30px;height:30px;border-radius:8px;font-size:16px}
+.qty-number{min-width:25px;text-align:center;font-weight:bold;font-size:16px}
+.total{font-weight:bold;font-size:22px;margin:20px 0;padding-top:15px;border-top:3px solid #0d47a1;color:#0d47a1;text-align:center}
 .checkout-btn{background:linear-gradient(135deg,#25D366,#20ba5a);color:white;border:none;width:100%;padding:18px;border-radius:15px;font-size:18px;margin-top:10px;font-weight:bold;box-shadow:0 6px 15px rgba(37,211,102,0.4)}
 .close-btn{background:#e0e0e0;color:#333;border:none;padding:12px;width:100%;border-radius:12px;margin-top:8px;font-size:16px}
+.empty-cart{text-align:center;color:#888;padding:30px 0}
 </style>
 </head>
 <body>
@@ -79,11 +88,32 @@ function addToCart(name,price){
 let item = cart.find(i=>i.name===name);
 if(item){item.qty++}else{cart.push({name:name,price:price,qty:1})}
 updateCart()}
+function changeQty(index,change){
+cart[index].qty += change;
+if(cart[index].qty <= 0){cart.splice(index,1)}
+updateCart()}
+function removeItem(index){
+cart.splice(index,1);
+updateCart()}
 function updateCart(){
 let count=0,total=0,html='';
-cart.forEach(i=>{count+=i.qty;total+=i.price*i.qty;html+=`<div class="cart-item"><span>${i.name} × ${i.qty}</span><span>${i.price*i.qty} رس</span></div>`});
+cart.forEach((i,index)=>{
+count+=i.qty;
+total+=i.price*i.qty;
+html+=`<div class="cart-item">
+<div class="item-details">
+<div class="item-name">${i.name}</div>
+<div class="item-price">${i.price} رس × ${i.qty} = ${i.price*i.qty} رس</div>
+</div>
+<div class="qty-controls">
+<button class="qty-btn" onclick="changeQty(${index},-1)">-</button>
+<span class="qty-number">${i.qty}</span>
+<button class="qty-btn" onclick="changeQty(${index},1)">+</button>
+<button class="delete-btn" onclick="removeItem(${index})">🗑️</button>
+</div>
+</div>`});
 document.getElementById('cartCount').innerText=count;
-document.getElementById('cartItems').innerHTML=html||'<p style="text-align:center;color:#888">السلة فاضية</p>';
+document.getElementById('cartItems').innerHTML=html||'<div class="empty-cart">السلة فاضية 😅</div>';
 document.getElementById('cartTotal').innerText=`الإجمالي: ${total} رس`}
 function openCart(){document.getElementById('cartModal').style.display='block';updateCart()}
 function closeCart(){document.getElementById('cartModal').style.display='none'}
