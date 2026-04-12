@@ -5,58 +5,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سمك فرسان | Fursan Fish</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#f5f5f5}
-.header{background:#0d47a1;color:white;padding:15px;text-align:center;position:sticky;top:0;z-index:100}
-.header h1{font-size:22px}
-.cart-btn{position:fixed;bottom:20px;left:20px;background:#25D366;color:white;border:none;border-radius:50px;padding:15px 20px;font-size:16px;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:100}
-.cart-count{background:red;color:white;border-radius:50%;padding:2px 8px;font-size:12px;position:absolute;top:-5px;right:-5px}
-.container{padding:15px;max-width:600px;margin:auto}
-.notice{background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;font-size:14px}
-.category{background:white;padding:15px;margin:10px 0;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
-.category h2{color:#0d47a1;margin-bottom:10px;font-size:18px}
-.product{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200') center/cover fixed;
+min-height:100vh;color:#fff}
+.header{background:rgba(13,71,161,0.9);backdrop-filter:blur(10px);color:white;padding:20px;text-align:center;position:sticky;top:0;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.header h1{font-size:28px;text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
+.cart-btn{position:fixed;bottom:20px;left:20px;background:#25D366;color:white;border:none;border-radius:50px;padding:18px 25px;font-size:18px;box-shadow:0 6px 20px rgba(0,0,0,0.4);z-index:100;font-weight:bold}
+.cart-count{background:#ff3b30;color:white;border-radius:50%;padding:3px 9px;font-size:14px;position:absolute;top:-8px;right:-8px;font-weight:bold}
+.container{padding:20px;max-width:650px;margin:auto}
+.notice{background:rgba(255,243,205,0.95);color:#333;padding:15px;border-radius:15px;margin:15px 0;font-size:15px;font-weight:bold;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
+.category{background:rgba(255,255,255,0.95);padding:20px;margin:15px 0;border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,0.3);color:#333}
+.category h2{color:#0d47a1;margin-bottom:15px;font-size:22px;border-bottom:3px solid #0d47a1;padding-bottom:8px}
+.product{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #ddd}
 .product:last-child{border-bottom:none}
-.product-info h3{font-size:16px;margin-bottom:4px}
-.product-info p{color:#666;font-size:14px}
-.add-btn{background:#0d47a1;color:white;border:none;padding:8px 15px;border-radius:8px;font-size:14px}
-.cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;z-index:200}
-.cart-content{background:white;width:90%;max-width:400px;margin:50px auto;border-radius:12px;padding:20px;max-height:80vh;overflow-y:auto}
-.cart-item{display:flex;justify-content:space-between;margin:10px 0;font-size:14px}
-.total{font-weight:bold;font-size:18px;margin:15px 0;padding-top:15px;border-top:2px solid #eee}
-.checkout-btn{background:#25D366;color:white;border:none;width:100%;padding:15px;border-radius:8px;font-size:16px;margin-top:10px}
-.close-btn{background:#ccc;border:none;padding:10px;width:100%;border-radius:8px;margin-top:5px}
+.product-info h3{font-size:18px;margin-bottom:5px;color:#222}
+.product-info p{color:#0d47a1;font-size:16px;font-weight:bold}
+.add-btn{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;border:none;padding:10px 20px;border-radius:12px;font-size:16px;font-weight:bold;box-shadow:0 4px 10px rgba(13,71,161,0.4)}
+.add-btn:active{transform:scale(0.95)}
+.cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;z-index:200;backdrop-filter:blur(5px)}
+.cart-content{background:white;color:#333;width:92%;max-width:420px;margin:40px auto;border-radius:20px;padding:25px;max-height:85vh;overflow-y:auto;box-shadow:0 10px 40px rgba(0,0,0,0.5)}
+.cart-content h2{color:#0d47a1;text-align:center;margin-bottom:15px}
+.cart-item{display:flex;justify-content:space-between;margin:12px 0;font-size:16px;padding:8px 0;border-bottom:1px dashed #ddd}
+.total{font-weight:bold;font-size:22px;margin:20px 0;padding-top:15px;border-top:3px solid #0d47a1;color:#0d47a1}
+.checkout-btn{background:linear-gradient(135deg,#25D366,#20ba5a);color:white;border:none;width:100%;padding:18px;border-radius:15px;font-size:18px;margin-top:10px;font-weight:bold;box-shadow:0 6px 15px rgba(37,211,102,0.4)}
+.close-btn{background:#e0e0e0;color:#333;border:none;padding:12px;width:100%;border-radius:12px;margin-top:8px;font-size:16px}
 </style>
 </head>
 <body>
 <div class="header">
 <h1>🐟 سمك فرسان</h1>
-<p style="font-size:14px">طازج يومياً من البحر إلى بابك</p>
+<p style="font-size:16px;margin-top:5px">طازج يومياً من البحر إلى بابك</p>
 </div>
 <div class="container">
 <div class="notice">⏰ التوصيل خلال 3 ساعات داخل الرياض - 20 رس</div>
 <div class="category">
 <h2>هامور</h2>
-<div class="product"><div class="product-info"><h3>هامور وسط</h3><p>45 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور وسط',45)">أضف</button></div>
-<div class="product"><div class="product-info"><h3>هامور كبير</h3><p>55 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور كبير',55)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>هامور وسط</h3><p>45 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور وسط',45)">أضف +</button></div>
+<div class="product"><div class="product-info"><h3>هامور كبير</h3><p>55 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور كبير',55)">أضف +</button></div>
 </div>
 <div class="category">
 <h2>كنعد</h2>
-<div class="product"><div class="product-info"><h3>كنعد شرائح</h3><p>60 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد شرائح',60)">أضف</button></div>
-<div class="product"><div class="product-info"><h3>كنعد كامل</h3><p>50 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد كامل',50)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>كنعد شرائح</h3><p>60 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد شرائح',60)">أضف +</button></div>
+<div class="product"><div class="product-info"><h3>كنعد كامل</h3><p>50 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد كامل',50)">أضف +</button></div>
 </div>
 <div class="category">
 <h2>بياض</h2>
-<div class="product"><div class="product-info"><h3>بياض طازج</h3><p>35 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('بياض طازج',35)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>بياض طازج</h3><p>35 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('بياض طازج',35)">أضف +</button></div>
 </div>
 <div class="category">
 <h2>شعور</h2>
-<div class="product"><div class="product-info"><h3>شعور وسط</h3><p>40 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('شعور وسط',40)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>شعور وسط</h3><p>40 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('شعور وسط',40)">أضف +</button></div>
 </div>
 <div class="category">
 <h2>ربيان</h2>
-<div class="product"><div class="product-info"><h3>ربيان جامبو</h3><p>85 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان جامبو',85)">أضف</button></div>
-<div class="product"><div class="product-info"><h3>ربيان وسط</h3><p>65 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان وسط',65)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>ربيان جامبو</h3><p>85 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان جامبو',85)">أضف +</button></div>
+<div class="product"><div class="product-info"><h3>ربيان وسط</h3><p>65 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان وسط',65)">أضف +</button></div>
 </div>
 </div>
 <button class="cart-btn" onclick="openCart()">🛒 السلة<span class="cart-count" id="cartCount">0</span></button>
@@ -74,12 +78,12 @@ let cart = [];
 function addToCart(name,price){
 let item = cart.find(i=>i.name===name);
 if(item){item.qty++}else{cart.push({name:name,price:price,qty:1})}
-updateCart();alert('تمت الإضافة للسلة ✅')}
+updateCart()}
 function updateCart(){
 let count=0,total=0,html='';
 cart.forEach(i=>{count+=i.qty;total+=i.price*i.qty;html+=`<div class="cart-item"><span>${i.name} × ${i.qty}</span><span>${i.price*i.qty} رس</span></div>`});
 document.getElementById('cartCount').innerText=count;
-document.getElementById('cartItems').innerHTML=html||'<p>السلة فاضية</p>';
+document.getElementById('cartItems').innerHTML=html||'<p style="text-align:center;color:#888">السلة فاضية</p>';
 document.getElementById('cartTotal').innerText=`الإجمالي: ${total} رس`}
 function openCart(){document.getElementById('cartModal').style.display='block';updateCart()}
 function closeCart(){document.getElementById('cartModal').style.display='none'}
@@ -88,8 +92,8 @@ if(cart.length===0){alert('السلة فاضية');return}
 let msg='*طلب جديد من متجر سمك فرسان*%0A%0A';
 let total=0;
 cart.forEach(i=>{msg+=`• ${i.name} × ${i.qty} = ${i.price*i.qty} رس%0A`;total+=i.price*i.qty});
-msg+=`%0A*الإجمالي: ${total} رس*%0A%0Aالاسم:%0Aالعنوان:%0A`;
+msg+=`%0A*الإجمالي: ${total} رس*%0A%0Aالاسم:%0Aالعنوان:%0Aرقم الجوال:%0A`;
 window.open(`https://wa.me/966537289961?text=${msg}`,'_blank')}
-</script>b
+</script>
 </body>
 </html>
