@@ -15,6 +15,9 @@ min-height:100vh;color:#fff}
 .cart-count{background:#ff3b30;color:white;border-radius:50%;padding:3px 9px;font-size:14px;position:absolute;top:-8px;right:-8px;font-weight:bold}
 .container{padding:20px;max-width:650px;margin:auto}
 .notice{background:rgba(255,243,205,0.95);color:#333;padding:15px;border-radius:15px;margin:15px 0;font-size:15px;font-weight:bold;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
+.weight-note{background:rgba(255,235,238,0.95);color:#c62828;padding:12px;border-radius:12px;margin:10px 0;font-size:14px;font-weight:bold;text-align:center;border:2px solid #ef5350}
+.location-bar{background:rgba(227,242,253,0.95);color:#0d47a1;padding:12px;border-radius:12px;margin:10px 0;font-size:14px;font-weight:bold;text-align:center}
+.location-bar a{color:#0d47a1;text-decoration:none}
 .category{background:rgba(255,255,255,0.95);padding:20px;margin:15px 0;border-radius:20px;box-shadow:0 8px 25px rgba(0,0,0,0.3);color:#333}
 .category h2{color:#0d47a1;margin-bottom:15px;font-size:22px;border-bottom:3px solid #0d47a1;padding-bottom:8px}
 .product{display:flex;gap:15px;align-items:center;padding:15px 0;border-bottom:1px solid #ddd}
@@ -53,6 +56,24 @@ min-height:100vh;color:#fff}
 </div>
 <div class="container">
 <div class="notice">⏰ التوصيل خلال 3 ساعات داخل الرياض - 20 رس</div>
+<div class="weight-note">⚠️ ملاحظة: وزن الأسماك قبل التنظيف. الوزن ينقص بعد التنظيف</div>
+<div class="location-bar">📍 موقع المحل: حي الشفاء - <a href="https://maps.app.goo.gl/KommsZKhbiaJRYEY9" target="_blank">اضغط للخريطة</a></div>
+<div class="category">
+<h2>سلمون</h2>
+<div class="product">
+<div class="product-icon">🍣</div>
+<div class="product-info"><h3>سلمون فيلي</h3><p>65 رس / كيلو</p></div>
+<button class="add-btn" onclick="addToCart('سلمون فيلي',65)">أضف +</button>
+</div>
+</div>
+<div class="category">
+<h2>دنيس</h2>
+<div class="product">
+<div class="product-icon">🐟</div>
+<div class="product-info"><h3>دنيس طازج</h3><p>65 رس / كيلو</p></div>
+<button class="add-btn" onclick="addToCart('دنيس طازج',65)">أضف +</button>
+</div>
+</div>
 <div class="category">
 <h2>هامور</h2>
 <div class="product">
@@ -80,19 +101,19 @@ min-height:100vh;color:#fff}
 </div>
 </div>
 <div class="category">
+<h2>شعور</h2>
+<div class="product">
+<div class="product-icon">🐟</div>
+<div class="product-info"><h3>شعور وسط</h3><p>45 رس / كيلو</p></div>
+<button class="add-btn" onclick="addToCart('شعور وسط',45)">أضف +</button>
+</div>
+</div>
+<div class="category">
 <h2>بياض</h2>
 <div class="product">
 <div class="product-icon">🐡</div>
 <div class="product-info"><h3>بياض طازج</h3><p>35 رس / كيلو</p></div>
 <button class="add-btn" onclick="addToCart('بياض طازج',35)">أضف +</button>
-</div>
-</div>
-<div class="category">
-<h2>شعور</h2>
-<div class="product">
-<div class="product-icon">🐟</div>
-<div class="product-info"><h3>شعور وسط</h3><p>40 رس / كيلو</p></div>
-<button class="add-btn" onclick="addToCart('شعور وسط',40)">أضف +</button>
 </div>
 </div>
 <div class="category">
@@ -115,7 +136,7 @@ min-height:100vh;color:#fff}
 <h2>سلة المشتريات</h2>
 <div id="cartItems"></div>
 <div class="delivery-row"><span>رسوم التوصيل</span><span>20 رس</span></div>
-<textarea class="notes-area" id="orderNotes" placeholder="ملاحظات: مثلا: منظف ومقطع، بدون رأس..." rows="3"></textarea>
+<textarea class="notes-area" id="orderNotes" placeholder="ملاحظات: مثلا: منظف ومقطع، بدون رأس، مقلي، دفتر..." rows="3"></textarea>
 <div class="total" id="cartTotal">الإجمالي: 20 رس</div>
 <button class="checkout-btn" onclick="checkout()">إرسال الطلب عبر واتساب</button>
 <button class="close-btn" onclick="closeCart()">إغلاق</button>
