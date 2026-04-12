@@ -18,24 +18,24 @@
             padding-bottom: 80px;
         }
         
-       .header {
+      .header {
             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             padding: 25px 20px;
             text-align: center;
             border-radius: 0 0 25px 25px;
         }
         
-       .header h1 {
+      .header h1 {
             font-size: 28px;
             margin-bottom: 5px;
         }
         
-       .header p {
+      .header p {
             opacity: 0.9;
             font-size: 14px;
         }
         
-       .notice-bar {
+      .notice-bar {
             margin: 15px;
             padding: 12px;
             border-radius: 12px;
@@ -43,25 +43,25 @@
             text-align: center;
         }
         
-       .delivery {
+      .delivery {
             background: #fef3c7;
             color: #92400e;
             border: 1px solid #fbbf24;
         }
         
-       .warning {
+      .warning {
             background: #fee2e2;
             color: #991b1b;
             border: 1px solid #f87171;
         }
         
-       .location {
+      .location {
             background: #dbeafe;
             color: #1e40af;
             border: 1px solid #60a5fa;
         }
         
-       .product-section {
+      .product-section {
             background: #fff;
             margin: 15px;
             border-radius: 15px;
@@ -69,7 +69,7 @@
             color: #1f2937;
         }
         
-       .product-section h2 {
+      .product-section h2 {
             font-size: 20px;
             margin-bottom: 12px;
             color: #1e3a8a;
@@ -77,7 +77,7 @@
             border-bottom: 2px solid #e5e7eb;
         }
         
-       .product-card {
+      .product-card {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -85,63 +85,47 @@
             border-bottom: 1px solid #f3f4f6;
         }
         
-       .product-card:last-child {
+      .product-card:last-child {
             border-bottom: none;
         }
         
-       .product-info {
+      .product-info {
             flex: 1;
         }
         
-       .product-info h3 {
+      .product-info h3 {
             font-size: 16px;
             margin-bottom: 3px;
         }
         
-       .product-info p {
+      .product-info p {
             color: #3b82f6;
             font-weight: bold;
             font-size: 15px;
         }
         
-       .product-icon {
+      .product-icon {
             font-size: 40px;
             margin-left: 12px;
         }
         
-       .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-       .qty-btn {
+      .add-btn {
             background: #3b82f6;
             color: white;
             border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            padding: 10px 20px;
+            border-radius: 10px;
             font-weight: bold;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
         }
         
-       .qty-btn:active {
+      .add-btn:active {
             background: #2563eb;
             transform: scale(0.95);
         }
         
-       .qty-display {
-            background: #f3f4f6;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            min-width: 35px;
-            text-align: center;
-        }
-        
-       .cart-btn {
+      .cart-btn {
             position: fixed;
             bottom: 15px;
             left: 15px;
@@ -158,13 +142,163 @@
             z-index: 100;
         }
         
-       .cart-count {
+      .cart-count {
             background: #ef4444;
             color: white;
             border-radius: 50%;
             padding: 2px 8px;
             font-size: 14px;
             margin-right: 8px;
+        }
+
+        /* صفحة السلة */
+      .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 200;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+      .cart-content {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            color: #1f2937;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+      .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+      .cart-header h2 {
+            color: #1e3a8a;
+            font-size: 22px;
+        }
+        
+      .close-cart {
+            background: #ef4444;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+      .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+      .cart-item-info h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+      .cart-item-info p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+      .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+      .qty-btn-cart {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+      .qty-num {
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+        
+      .notes-section {
+            margin: 20px 0;
+        }
+        
+      .notes-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+        
+      .notes-section textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+      .cart-total {
+            background: #f9fafb;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        
+      .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 15px;
+        }
+        
+      .total-row.final {
+            font-weight: bold;
+            font-size: 18px;
+            color: #1e3a8a;
+            padding-top: 10px;
+            border-top: 2px solid #e5e7eb;
+        }
+        
+      .checkout-btn {
+            width: 100%;
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+      .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6b7280;
         }
     </style>
 </head>
@@ -195,11 +329,7 @@
                 <h3>سلمون فيلي</h3>
                 <p>65 رس / كيلو</p>
             </div>
-            <div class="qty-controls">
-                <button class="qty-btn" onclick="updateQty('سلمون فيلي', 65, -1)">-</button>
-                <span class="qty-display" id="qty-سلمون فيلي">0</span>
-                <button class="qty-btn" onclick="updateQty('سلمون فيلي', 65, 1)">+</button>
-            </div>
+            <button class="add-btn" onclick="addToCart('سلمون فيلي', 65)">+ أضف</button>
         </div>
     </div>
 
@@ -211,11 +341,7 @@
                 <h3>دنيس طازج</h3>
                 <p>65 رس / كيلو</p>
             </div>
-            <div class="qty-controls">
-                <button class="qty-btn" onclick="updateQty('دنيس طازج', 65, -1)">-</button>
-                <span class="qty-display" id="qty-دنيس طازج">0</span>
-                <button class="qty-btn" onclick="updateQty('دنيس طازج', 65, 1)">+</button>
-            </div>
+            <button class="add-btn" onclick="addToCart('دنيس طازج', 65)">+ أضف</button>
         </div>
     </div>
 
@@ -227,11 +353,7 @@
                 <h3>هامور</h3>
                 <p>45 رس / كيلو</p>
             </div>
-            <div class="qty-controls">
-                <button class="qty-btn" onclick="updateQty('هامور', 45, -1)">-</button>
-                <span class="qty-display" id="qty-هامور">0</span>
-                <button class="qty-btn" onclick="updateQty('هامور', 45, 1)">+</button>
-            </div>
+            <button class="add-btn" onclick="addToCart('هامور', 45)">+ أضف</button>
         </div>
     </div>
 
@@ -243,32 +365,51 @@
                 <h3>ربيان وسط</h3>
                 <p>65 رس / كيلو</p>
             </div>
-            <div class="qty-controls">
-                <button class="qty-btn" onclick="updateQty('ربيان وسط', 65, -1)">-</button>
-                <span class="qty-display" id="qty-ربيان وسط">0</span>
-                <button class="qty-btn" onclick="updateQty('ربيان وسط', 65, 1)">+</button>
-            </div>
+            <button class="add-btn" onclick="addToCart('ربيان وسط', 65)">+ أضف</button>
         </div>
     </div>
 
-    <button class="cart-btn" onclick="checkout()">
+    <button class="cart-btn" onclick="openCart()">
         السلة <span class="cart-count" id="cartCount">0</span> 🛒
     </button>
+
+    <!-- صفحة السلة -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>سلة المشتريات</h2>
+                <button class="close-cart" onclick="closeCart()">×</button>
+            </div>
+            
+            <div id="cartItems"></div>
+            
+            <div class="notes-section">
+                <label>ملاحظات على الطلب:</label>
+                <textarea id="orderNotes" placeholder="مثال: تنظيف كامل، تقطيع شرائح، بدون رأس..."></textarea>
+            </div>
+            
+            <div class="cart-total" id="cartTotal"></div>
+            
+            <button class="checkout-btn" onclick="checkout()">إتمام الطلب عبر واتساب</button>
+        </div>
+    </div>
 
     <script>
         let cart = {};
         
-        function updateQty(name, price, change) {
+        function addToCart(name, price) {
             if (!cart[name]) {
                 cart[name] = {qty: 0, price: price};
             }
+            cart[name].qty += 1;
             
-            cart[name].qty += change;
+            event.target.textContent = '✓ تم';
+            event.target.style.background = '#10b981';
+            setTimeout(() => {
+                event.target.textContent = '+ أضف';
+                event.target.style.background = '#3b82f6';
+            }, 600);
             
-            if (cart[name].qty < 0) cart[name].qty = 0;
-            if (cart[name].qty === 0) delete cart[name];
-            
-            document.getElementById('qty-' + name).textContent = cart[name]? cart[name].qty : 0;
             updateCartCount();
         }
         
@@ -280,9 +421,78 @@
             document.getElementById('cartCount').textContent = total;
         }
         
+        function openCart() {
+            renderCart();
+            document.getElementById('cartModal').style.display = 'block';
+        }
+        
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+        
+        function updateQtyInCart(name, change) {
+            cart[name].qty += change;
+            if (cart[name].qty <= 0) {
+                delete cart[name];
+            }
+            renderCart();
+            updateCartCount();
+        }
+        
+        function renderCart() {
+            let cartItemsDiv = document.getElementById('cartItems');
+            let cartTotalDiv = document.getElementById('cartTotal');
+            
+            if (Object.keys(cart).length === 0) {
+                cartItemsDiv.innerHTML = '<div class="empty-cart">السلة فاضية 🛒<br>أضف منتجات أول</div>';
+                cartTotalDiv.innerHTML = '';
+                return;
+            }
+            
+            let itemsHTML = '';
+            let total = 0;
+            
+            for (let name in cart) {
+                let item = cart[name];
+                let subtotal = item.price * item.qty;
+                total += subtotal;
+                
+                itemsHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${name}</h4>
+                            <p>${item.price} رس × ${item.qty} = ${subtotal} رس</p>
+                        </div>
+                        <div class="cart-qty">
+                            <button class="qty-btn-cart" onclick="updateQtyInCart('${name}', -1)">-</button>
+                            <span class="qty-num">${item.qty}</span>
+                            <button class="qty-btn-cart" onclick="updateQtyInCart('${name}', 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            cartItemsDiv.innerHTML = itemsHTML;
+            
+            cartTotalDiv.innerHTML = `
+                <div class="total-row">
+                    <span>المجموع:</span>
+                    <span>${total} رس</span>
+                </div>
+                <div class="total-row">
+                    <span>التوصيل:</span>
+                    <span>20 رس</span>
+                </div>
+                <div class="total-row final">
+                    <span>الإجمالي:</span>
+                    <span>${total + 20} رس</span>
+                </div>
+            `;
+        }
+        
         function checkout() {
             if (Object.keys(cart).length === 0) {
-                alert('السلة فاضية! أضف منتجات أول');
+                alert('السلة فاضية!');
                 return;
             }
             
@@ -298,12 +508,18 @@
                 i++;
             }
             
+            let notes = document.getElementById('orderNotes').value;
+            if (notes.trim()) {
+                message += `%0A📝 ملاحظات: ${notes}%0A`;
+            }
+            
             message += `%0Aالإجمالي: ${total} رس%0A`;
             message += `التوصيل: 20 رس%0A`;
             message += `المبلغ الكلي: ${total + 20} رس%0A%0A`;
             message += `العنوان: `;
             
             window.open(`https://wa.me/966537289961?text=${message}`, '_blank');
+            closeCart();
         }
     </script>
 
