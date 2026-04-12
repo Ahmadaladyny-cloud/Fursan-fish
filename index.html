@@ -215,4 +215,51 @@
                 <h3>ربيان وسط</h3>
                 <p>65 رس / كيلو</p>
             </div>
-            <button class="add-btn" onclick="addToCart('ربيان وسط', 65)">
+            <button class="add-btn" onclick="addToCart('ربيان وسط', 65)">+ أضف</button>
+        </div>
+    </div>
+
+    <button class="cart-btn" onclick="checkout()">
+        السلة <span class="cart-count" id="cartCount">0</span> 🛒
+    </button>
+
+    <script>
+        let cart = [];
+        
+        function addToCart(name, price) {
+            cart.push({name: name, price: price});
+            document.getElementById('cartCount').textContent = cart.length;
+            
+            event.target.textContent = '✓ تم';
+            event.target.style.background = '#10b981';
+            setTimeout(() => {
+                event.target.textContent = '+ أضف';
+                event.target.style.background = '#3b82f6';
+            }, 800);
+        }
+        
+        function checkout() {
+            if (cart.length === 0) {
+                alert('السلة فاضية! أضف منتجات أول');
+                return;
+            }
+            
+            let message = 'مرحبا سمك جزيرة فرسان 🐟%0A%0Aطلب جديد:%0A';
+            let total = 0;
+            
+            cart.forEach((item, i) => {
+                message += `${i+1}. ${item.name} - ${item.price} رس%0A`;
+                total += item.price;
+            });
+            
+            message += `%0Aالإجمالي: ${total} رس%0A`;
+            message += `التوصيل: 20 رس%0A`;
+            message += `المبلغ الكلي: ${total + 20} رس%0A%0A`;
+            message += `العنوان: `;
+            
+            window.open(`https://wa.me/966537289961?text=${message}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
