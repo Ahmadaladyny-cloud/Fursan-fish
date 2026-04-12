@@ -1,71 +1,95 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سمك فرسان</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
-        body { background: #FFFFFF; max-width: 500px; margin: 0 auto; }
-        .header { background: #005F73; color: white; padding: 16px; text-align: center; }
-        .header h1 { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
-        .header .datetime { font-size: 14px; opacity: 0.95; }
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: white; border-bottom: 1px solid #eee; }
-        .navbar .logo { font-weight: 900; color: #005F73; font-size: 18px; }
-        .navbar .icons { display: flex; gap: 16px; font-size: 22px; }
-        .cart { position: relative; }
-        .cart-badge { position: absolute; top: -8px; right: -8px; background: #EE9B00; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-        .title { text-align: center; font-size: 18px; font-weight: 700; margin: 20px 0; color: #001219; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 16px; }
-        .card { 
-            position: relative; border-radius: 16px; overflow: hidden; height: 140px; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none;
-        }
-        .card .icon { font-size: 40px; line-height: 1; }
-        .card .name { font-size: 18px; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-        .card:nth-child(1) { background: linear-gradient(135deg, #005F73, #0A9396); }
-        .card:nth-child(2) { background: linear-gradient(135deg, #0A9396, #94D2BD); }
-        .card:nth-child(3) { background: linear-gradient(135deg, #94D2BD, #0A9396); }
-        .card:nth-child(4) { background: linear-gradient(135deg, #005F73, #001219); }
-        .card:nth-child(5) { background: linear-gradient(135deg, #EE9B00, #CA6702); }
-        .card:nth-child(6) { background: linear-gradient(135deg, #CA6702, #BB3E03); }
-        .footer { margin: 24px 16px 16px; padding: 12px; background: #E9F5F7; border-radius: 8px; font-size: 13px; color: #005F73; line-height: 1.8; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سمك فرسان | Fursan Fish</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#f5f5f5}
+.header{background:#0d47a1;color:white;padding:15px;text-align:center;position:sticky;top:0;z-index:100}
+.header h1{font-size:22px}
+.cart-btn{position:fixed;bottom:20px;left:20px;background:#25D366;color:white;border:none;border-radius:50px;padding:15px 20px;font-size:16px;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:100}
+.cart-count{background:red;color:white;border-radius:50%;padding:2px 8px;font-size:12px;position:absolute;top:-5px;right:-5px}
+.container{padding:15px;max-width:600px;margin:auto}
+.notice{background:#fff3cd;padding:10px;border-radius:8px;margin:10px 0;font-size:14px}
+.category{background:white;padding:15px;margin:10px 0;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1)}
+.category h2{color:#0d47a1;margin-bottom:10px;font-size:18px}
+.product{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
+.product:last-child{border-bottom:none}
+.product-info h3{font-size:16px;margin-bottom:4px}
+.product-info p{color:#666;font-size:14px}
+.add-btn{background:#0d47a1;color:white;border:none;padding:8px 15px;border-radius:8px;font-size:14px}
+.cart-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;z-index:200}
+.cart-content{background:white;width:90%;max-width:400px;margin:50px auto;border-radius:12px;padding:20px;max-height:80vh;overflow-y:auto}
+.cart-item{display:flex;justify-content:space-between;margin:10px 0;font-size:14px}
+.total{font-weight:bold;font-size:18px;margin:15px 0;padding-top:15px;border-top:2px solid #eee}
+.checkout-btn{background:#25D366;color:white;border:none;width:100%;padding:15px;border-radius:8px;font-size:16px;margin-top:10px}
+.close-btn{background:#ccc;border:none;padding:10px;width:100%;border-radius:8px;margin-top:5px}
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>مرحباً بكم في سمك فرسان</h1>
-        <div class="datetime" id="datetime"></div>
-    </div>
-    <div class="navbar">
-        <div class="icons">☰</div>
-        <div class="logo">🐟 سمك فرسان</div>
-        <div class="icons"><span>🔍</span><div class="cart">🛒<span class="cart-badge">0</span></div></div>
-    </div>
-    <h2 class="title">السوق المركزي - الرياض</h2>
-    <div class="grid">
-        <div class="card"><div class="icon">🐟</div><div class="name">كنعد</div></div>
-        <div class="card"><div class="icon">🐠</div><div class="name">هامور</div></div>
-        <div class="card"><div class="icon">🐡</div><div class="name">شعور</div></div>
-        <div class="card"><div class="icon">🎣</div><div class="name">بياض</div></div>
-        <div class="card"><div class="icon">🦐</div><div class="name">ربيان</div></div>
-        <div class="card"><div class="icon">⭐</div><div class="name">عروض اليوم</div></div>
-    </div>
-    <div class="footer">
-        💡 <b>الأسعار محدثة اليوم</b> - حسب سعر سوق السمك المركزي<br>
-        🚚 <b>التوصيل خلال 3 ساعات</b> داخل الرياض - 20 ر.س
-    </div>
-    <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-            let formatted = now.toLocaleDateString('ar', options);
-            document.getElementById('datetime').innerHTML = `📅 ${formatted}`;
-        }
-        updateDateTime();
-        setInterval(updateDateTime, 60000);
-    </script>
+<div class="header">
+<h1>🐟 سمك فرسان</h1>
+<p style="font-size:14px">طازج يومياً من البحر إلى بابك</p>
+</div>
+<div class="container">
+<div class="notice">⏰ التوصيل خلال 3 ساعات داخل الرياض - 20 رس</div>
+<div class="category">
+<h2>هامور</h2>
+<div class="product"><div class="product-info"><h3>هامور وسط</h3><p>45 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور وسط',45)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>هامور كبير</h3><p>55 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('هامور كبير',55)">أضف</button></div>
+</div>
+<div class="category">
+<h2>كنعد</h2>
+<div class="product"><div class="product-info"><h3>كنعد شرائح</h3><p>60 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد شرائح',60)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>كنعد كامل</h3><p>50 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('كنعد كامل',50)">أضف</button></div>
+</div>
+<div class="category">
+<h2>بياض</h2>
+<div class="product"><div class="product-info"><h3>بياض طازج</h3><p>35 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('بياض طازج',35)">أضف</button></div>
+</div>
+<div class="category">
+<h2>شعور</h2>
+<div class="product"><div class="product-info"><h3>شعور وسط</h3><p>40 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('شعور وسط',40)">أضف</button></div>
+</div>
+<div class="category">
+<h2>ربيان</h2>
+<div class="product"><div class="product-info"><h3>ربيان جامبو</h3><p>85 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان جامبو',85)">أضف</button></div>
+<div class="product"><div class="product-info"><h3>ربيان وسط</h3><p>65 رس / كيلو</p></div><button class="add-btn" onclick="addToCart('ربيان وسط',65)">أضف</button></div>
+</div>
+</div>
+<button class="cart-btn" onclick="openCart()">🛒 السلة<span class="cart-count" id="cartCount">0</span></button>
+<div class="cart-modal" id="cartModal">
+<div class="cart-content">
+<h2>سلة المشتريات</h2>
+<div id="cartItems"></div>
+<div class="total" id="cartTotal">الإجمالي: 0 رس</div>
+<button class="checkout-btn" onclick="checkout()">إرسال الطلب عبر واتساب</button>
+<button class="close-btn" onclick="closeCart()">إغلاق</button>
+</div>
+</div>
+<script>
+let cart = [];
+function addToCart(name,price){
+let item = cart.find(i=>i.name===name);
+if(item){item.qty++}else{cart.push({name:name,price:price,qty:1})}
+updateCart();alert('تمت الإضافة للسلة ✅')}
+function updateCart(){
+let count=0,total=0,html='';
+cart.forEach(i=>{count+=i.qty;total+=i.price*i.qty;html+=`<div class="cart-item"><span>${i.name} × ${i.qty}</span><span>${i.price*i.qty} رس</span></div>`});
+document.getElementById('cartCount').innerText=count;
+document.getElementById('cartItems').innerHTML=html||'<p>السلة فاضية</p>';
+document.getElementById('cartTotal').innerText=`الإجمالي: ${total} رس`}
+function openCart(){document.getElementById('cartModal').style.display='block';updateCart()}
+function closeCart(){document.getElementById('cartModal').style.display='none'}
+function checkout(){
+if(cart.length===0){alert('السلة فاضية');return}
+let msg='*طلب جديد من متجر سمك فرسان*%0A%0A';
+let total=0;
+cart.forEach(i=>{msg+=`• ${i.name} × ${i.qty} = ${i.price*i.qty} رس%0A`;total+=i.price*i.qty});
+msg+=`%0A*الإجمالي: ${total} رس*%0A%0Aالاسم:%0Aالعنوان:%0A`;
+window.open(`https://wa.me/966502566683?text=${msg}`,'_blank')}
+</script>
 </body>
 </html>
