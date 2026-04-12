@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سمك فرسان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
+        body { background: #FFFFFF; max-width: 500px; margin: 0 auto; }
+        .header { background: #005F73; color: white; padding: 16px; text-align: center; }
+        .header h1 { font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+        .header .datetime { font-size: 14px; opacity: 0.95; }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: white; border-bottom: 1px solid #eee; }
+        .navbar .logo { font-weight: 900; color: #005F73; font-size: 18px; }
+        .navbar .icons { display: flex; gap: 16px; font-size: 22px; }
+        .cart { position: relative; }
+        .cart-badge { position: absolute; top: -8px; right: -8px; background: #EE9B00; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .title { text-align: center; font-size: 18px; font-weight: 700; margin: 20px 0; color: #001219; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 16px; }
+        .card { 
+            position: relative; border-radius: 16px; overflow: hidden; height: 140px; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-decoration: none;
+        }
+        .card .icon { font-size: 40px; line-height: 1; }
+        .card .name { font-size: 18px; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .card:nth-child(1) { background: linear-gradient(135deg, #005F73, #0A9396); }
+        .card:nth-child(2) { background: linear-gradient(135deg, #0A9396, #94D2BD); }
+        .card:nth-child(3) { background: linear-gradient(135deg, #94D2BD, #0A9396); }
+        .card:nth-child(4) { background: linear-gradient(135deg, #005F73, #001219); }
+        .card:nth-child(5) { background: linear-gradient(135deg, #EE9B00, #CA6702); }
+        .card:nth-child(6) { background: linear-gradient(135deg, #CA6702, #BB3E03); }
+        .footer { margin: 24px 16px 16px; padding: 12px; background: #E9F5F7; border-radius: 8px; font-size: 13px; color: #005F73; line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>مرحباً بكم في سمك فرسان</h1>
+        <div class="datetime" id="datetime"></div>
+    </div>
+    <div class="navbar">
+        <div class="icons">☰</div>
+        <div class="logo">🐟 سمك فرسان</div>
+        <div class="icons"><span>🔍</span><div class="cart">🛒<span class="cart-badge">0</span></div></div>
+    </div>
+    <h2 class="title">السوق المركزي - الرياض</h2>
+    <div class="grid">
+        <div class="card"><div class="icon">🐟</div><div class="name">كنعد</div></div>
+        <div class="card"><div class="icon">🐠</div><div class="name">هامور</div></div>
+        <div class="card"><div class="icon">🐡</div><div class="name">شعور</div></div>
+        <div class="card"><div class="icon">🎣</div><div class="name">بياض</div></div>
+        <div class="card"><div class="icon">🦐</div><div class="name">ربيان</div></div>
+        <div class="card"><div class="icon">⭐</div><div class="name">عروض اليوم</div></div>
+    </div>
+    <div class="footer">
+        💡 <b>الأسعار محدثة اليوم</b> - حسب سعر سوق السمك المركزي<br>
+        🚚 <b>التوصيل خلال 3 ساعات</b> داخل الرياض - 20 ر.س
+    </div>
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+            let formatted = now.toLocaleDateString('ar', options);
+            document.getElementById('datetime').innerHTML = `📅 ${formatted}`;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 60000);
+    </script>
+</body>
+</html>
